@@ -1,5 +1,4 @@
 import { NavLink } from "react-router";
-
 export default function Sidebar() {
   const links = [
     {
@@ -7,23 +6,25 @@ export default function Sidebar() {
       target: "/dashboard",
     },
     {
-      label: "Main Dashboard",
-      target: "/dashboard",
+      label: "Pemasukan",
+      target: "/dashboard/income",
     },
     {
-      label: "Main Dashboard",
-      target: "/dashboard",
+      label: "Pengeluaran",
+      target: "/dashboard/outcome",
     },
   ];
   return (
-    <aside className="bg-slate-200 w-64 h-full rounded-e-2xl py-2 space-y-12">
+    <aside className="hidden sm:block bg-slate-200 w-64 h-full rounded-e-2xl py-2 space-y-12">
       <div id="sidebar_head" className="flex justify-center">
-        <p className="text-2xl">Fintrack</p>
+        <NavLink to="/" className="text-2xl font-bold">Fintrack</NavLink>
       </div>
       <div id="list-links" className="flex flex-col space-y-3 items-center px-2 font-semibold">
-        {links.map((link) => {
+        {links.map((link, index) => {
           return (
-            <NavLink to={link.target} className="flex items-center gap-5 py-2 px-4 w-full transition-all rounded hover:bg-black hover:text-white">
+            <NavLink key={index} to={link.target} className={({isActive}) => 
+              `flex items-center gap-5 py-2 px-4 w-full transition-all rounded hover:bg-black hover:text-[#FA8112] ${isActive ? 'bg-black text-[#FA8112]' : ''}`
+            }>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
               </svg>
