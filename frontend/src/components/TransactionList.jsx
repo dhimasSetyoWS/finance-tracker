@@ -1,7 +1,7 @@
 export default function TransactionList() {
   return (
-    <div className="my-3 rounded">
-      <table className="w-full text-left">
+    <div className="lg:block hidden my-3 rounded text-left w-full">
+      <table className="w-full">
         <thead className="text-sm bg-black text-[#FA8112] border-b rounded">
           <tr>
             <th className="px-6 py-3 font-bold">Tanggal</th>

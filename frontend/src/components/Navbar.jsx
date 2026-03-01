@@ -14,7 +14,7 @@ export default function Navbar() {
           <a href="">Contact</a>
         </div>
         <div className="space-x-6">
-          <NavLink to="/dashboard">Dashboard</NavLink>
+          <NavLink to="/dashboard/main">Dashboard</NavLink>
         </div>
       </nav>
     </header>

@@ -3,7 +3,7 @@ export default function Sidebar() {
   const links = [
     {
       label: "Main Dashboard",
-      target: "/dashboard",
+      target: "/dashboard/main",
     },
     {
       label: "Pemasukan",
