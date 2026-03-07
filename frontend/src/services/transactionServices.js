@@ -21,6 +21,10 @@ async function getIdTransaction(id) {
 
 async function createTransaction(data) {
 	try {
+		data = {
+			...data,
+			amount : data.amount.replace("." , "")
+		}
 		const response = await axios.post(`${import.meta.env.VITE_API_URL}/`, data);
 		return response.data;
 	} catch(err) {

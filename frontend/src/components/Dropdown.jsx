@@ -1,15 +1,14 @@
 import { useState } from "react";
 
-export default function Dropdown({ title, items }) {
+export default function Dropdown({ title, items, value, setValue }) {
   const [dropdown, setDropdown] = useState(false);
-  const [selected, setSelected] = useState("");
   const toggleDropdown = () => {
     setDropdown(!dropdown);
   };
   return (
     <div className="space-y-2 relative">
       <button type="button" onClick={toggleDropdown} className="bg-slate-500 px-4 py-2 gap-1 rounded flex items-center cursor-pointer transition-all">
-        {selected || title}
+        {value || title}
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`size-5 transition-transform duration-350 ${dropdown && "rotate-180"}`}>
           <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
         </svg>
@@ -23,10 +22,10 @@ export default function Dropdown({ title, items }) {
                   <button
                     type="button"
                     onClick={() => {
-                      setSelected(item);
+                      setValue(item);
                       setDropdown(false);
                     }}
-                    className={`inline-flex w-full p-2 rounded-sm hover:bg-slate-600 cursor-pointer ${item === selected && "bg-slate-600"}`}
+                    className={`inline-flex w-full p-2 rounded-sm hover:bg-slate-600 cursor-pointer ${item === value && "bg-slate-600"}`}
                   >
                     {item}
                   </button>
