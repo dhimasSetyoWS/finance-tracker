@@ -1,9 +1,19 @@
 import { useState } from "react";
 
-export default function Dropdown({ title, items, value, setValue }) {
+export default function Dropdown({ title, items, name, value, handleChange }) {
   const [dropdown, setDropdown] = useState(false);
   const toggleDropdown = () => {
     setDropdown(!dropdown);
+  };
+  const handleDropdownChange = (name, value) => {
+    const fakeEvent = {
+      target : {
+        name,
+        value
+      }      
+    }
+  setDropdown(!dropdown);
+  handleChange(fakeEvent);
   };
   return (
     <div className="space-y-2 relative">
@@ -21,10 +31,7 @@ export default function Dropdown({ title, items, value, setValue }) {
                 <li key={index}>
                   <button
                     type="button"
-                    onClick={() => {
-                      setValue(item);
-                      setDropdown(false);
-                    }}
+                    onClick={() => handleDropdownChange(name, item)}
                     className={`inline-flex w-full p-2 rounded-sm hover:bg-slate-600 cursor-pointer ${item === value && "bg-slate-600"}`}
                   >
                     {item}

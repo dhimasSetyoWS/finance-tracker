@@ -43,7 +43,7 @@ export default function TransactionForm() {
         <div className="grid grid-cols-2 lg:grid-cols-3 space-y-2">
           <div>
             <label className="block text-lg font-semibold">Kategori :</label>
-            <Dropdown title="Kategori" items={["Makanan", "Transportasi", "Pendidikan", "Pribadi"]} />
+            <Dropdown value={value.category} handleChange={handleChange} name="category" title="Kategori" items={["Makanan", "Transportasi", "Pendidikan", "Pribadi"]} />
           </div>
           <div>
             <label className="block text-lg font-semibold">Tipe :</label>
