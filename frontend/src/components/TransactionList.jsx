@@ -1,11 +1,22 @@
 import { useEffect, useState } from "react";
 import { getAllTransaction } from "../services/transactionServices.js";
+import { TYPE_TRANSACTION_REVERSE, PAYMENTMETHOD_TRANSACTION_REVERSE } from "../constants/transaction.js";
 export default function TransactionList() {
   const [transactions, setTransaction] = useState([]);
   useEffect(() => {
     const getData = async () => {
-      const data = await getAllTransaction();
-      setTransaction(data);
+      try {
+        let data = await getAllTransaction();
+        data = data.map((item) => ({
+          ...item,
+          type : TYPE_TRANSACTION_REVERSE[item.type],
+          payment_method : PAYMENTMETHOD_TRANSACTION_REVERSE[item.payment_method]
+        
+        }));
+        setTransaction(data);
+      } catch(err) {
+        console.error(err);
+      }
     };
     getData();
   }, []);
@@ -24,7 +35,7 @@ export default function TransactionList() {
           </tr>
         </thead>
         <tbody className="bg-gray-900 text-[#FA8112] border-b">
-          {transactions.map((transaction, index) => {
+          { transactions.length > 0 && transactions.map((transaction, index) => {
             return (
             <tr key={index} className="hover:bg-gray-800 font-medium transition-all">
               <td className="px-6 py-3">{transaction.date.split("T")[0]}</td>

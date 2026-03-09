@@ -73,7 +73,7 @@ app.post('/', async (req, res) => {
 					type,
 					category,
 					payment_method,
-					date
+					date : new Date(date).toISOString()
 				}
 			}
 		)
