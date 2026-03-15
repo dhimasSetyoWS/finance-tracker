@@ -31,6 +31,7 @@ export default function TransactionForm() {
     try {
       const data = {
         ...value,
+        amount : parseFloat(value.amount.replace(/\./g, "")),
         type : TYPE_TRANSACTION[value.type],
         payment_method : PAYMENTMETHOD_TRANSACTION[value.payment_method]
       }

@@ -2,6 +2,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import TransactionList from "../components/TransactionList";
 import Card from "../components/Card";
 import SearchBar from "../components/SearchBar";
+import ModalInput from "../components/ModalInput";
 export default function MainDashboard() {
   return (
     <DashboardLayout>
