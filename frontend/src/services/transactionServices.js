@@ -29,6 +29,16 @@ async function createTransaction(data) {
 	}
 }
 
+async function updateTransaction(id,data) {
+	try {
+		const response = await axios.put(`${import.meta.env.VITE_API_URL}/${id}`, data);
+		return response.data;
+	} catch(err) {
+		console.error(err);
+		return err;
+	}
+}
+
 async function summaryTransaction() {
 	try {
 		const response = await axios.get(`${import.meta.env.VITE_API_URL}/summary`);
@@ -49,4 +59,4 @@ async function deleteTransaction(id) {
 }
 
 console.log(import.meta.env.VITE_API_URL);
-export {getAllTransaction, getIdTransaction, createTransaction, summaryTransaction, deleteTransaction}
+export {getAllTransaction, getIdTransaction, createTransaction, updateTransaction, summaryTransaction, deleteTransaction}
